@@ -1,5 +1,5 @@
 require 'sinatra'
 
-get '/' do 
-  "Hello Kitty"
+get '/' do
+  erb :index
 end
