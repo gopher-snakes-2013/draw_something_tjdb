@@ -1,2 +1,2 @@
 require './hello_kitty'
-# require 'sinatra/activerecord/rake'
+require 'sinatra/activerecord/rake'
