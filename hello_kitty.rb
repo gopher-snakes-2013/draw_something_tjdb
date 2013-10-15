@@ -6,6 +6,6 @@ require './dotenv'
 
 set :database, ENV['DATABASE_URL']
 
-get '/' do 
-  "Hello Kitty"
+get '/' do
+  erb :index
 end
