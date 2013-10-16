@@ -3,16 +3,15 @@ var ctx = canvas.getContext("2d");
 var save = document.getElementById("Save");
 var restore = document.getElementById("Restore");
 var clear = document.getElementById("clear");
-
-function drawing_dot(x,y){
-  ctx.fillRect(x,y,5,5);
-}
-
+var colorPicker = document.getElementById("colorPicker");
 
 var flag = 0;
 
-canvas.addEventListener("mousedown",function(){
+canvas.addEventListener("mousedown",function(e){
   flag = 1;
+  ctx.beginPath();
+  ctx.moveTo(e.offsetX,e.offsetY);
+  ctx.strokeStyle = colorPicker.value;
 });
 
 canvas.addEventListener("mouseup", function(){
@@ -21,7 +20,8 @@ canvas.addEventListener("mouseup", function(){
 
 canvas.addEventListener("mousemove", function(e){
     if (flag === 1) {
-      drawing_dot(e.offsetX,e.offsetY);
+      ctx.lineTo(e.offsetX, e.offsetY)
+      ctx.stroke();
     };
 });
 
