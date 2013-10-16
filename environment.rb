@@ -18,11 +18,11 @@ configure :production, :development, :test do
 
   ActiveRecord::Base.establish_connection(
       adapter: 'postgresql',
-      host: db.host,
-      username: db.user,
-      password: "",
-      database: db.path[1..-1],
-      encoding: 'utf8'
+      # host: db.host,
+      # username: db.user,
+      # password: "",
+      # database: db.path[1..-1],
+      # encoding: 'utf8'
 
     )
 end
