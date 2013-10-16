@@ -19,8 +19,8 @@ configure :production, :development, :test do
   ActiveRecord::Base.establish_connection(
       adapter: 'postgresql',
       host: 'localhost',
-      # username: db.user,
-      # password: "",
+      username: db.user,
+      password: "",
       database: 'draw_kitty',
       # encoding: 'utf8'
 
