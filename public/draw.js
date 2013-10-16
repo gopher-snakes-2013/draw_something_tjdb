@@ -3,9 +3,11 @@ var ctx = canvas.getContext("2d");
 var save = document.getElementById("Save");
 var restore = document.getElementById("Restore");
 var clear = document.getElementById("clear");
+var colorPicker = document.getElementById('colorPicker')
 
 function drawing_dot(x,y){
   ctx.fillRect(x,y,5,5);
+  ctx.fillStyle = colorPicker.value;
 }
 
 
