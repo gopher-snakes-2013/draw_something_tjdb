@@ -1,9 +1,6 @@
 require 'sinatra'
 require 'sinatra/activerecord'
-require './environment'
-require './dotenv'
 require './models/drawing'
-# require 'activerecord'
 
 use Rack::MethodOverride
 
