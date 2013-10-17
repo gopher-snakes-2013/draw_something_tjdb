@@ -11,4 +11,5 @@ group :development, :test do
   gem 'tux'
   gem 'capybara'
   gem 'rspec'
+  gem 'shoulda-matchers'
 end

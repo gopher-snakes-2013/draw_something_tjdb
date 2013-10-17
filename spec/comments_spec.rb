@@ -9,10 +9,12 @@ feature 'user may leave a comment for a drawing' do
   end
 end
 
-describe 'Comment' do
+describe Comment do
   it 'a comment can be created and stored to DB' do
     comment = Comment.create!(text: "Hey there")
     foundComment = Comment.last
     expect(comment).to eql foundComment
   end
+  
+  it { should belong_to(:drawing) }
 end
