@@ -1,6 +1,7 @@
 require 'sinatra'
 require 'sinatra/activerecord'
 require './models/drawing'
+require './models/comment'
 
 use Rack::MethodOverride
 
