@@ -10,12 +10,12 @@
 
 <ul>
 <% @drawings.each  do |drawing| %>
-<li><%= drawing.id %></li>
-
-
+<a href="/drawing/<%= drawing.id %>">Drawing: <%= drawing.id %></a>
 <% end %>
 </ul>
-<a href="/drawing/15">testing 15</a>
+
+  <input type="color" id="colorPicker">
+  
 
 
 </body>

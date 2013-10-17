@@ -9,7 +9,19 @@
   <button id="Restore">Restore</button>
   <input type="color" id="colorPicker"></input>
 
-<p><%= @drawing.id %></p>
+  <form method='POST' action='/'>
+    <input type="hidden" name="drawing_id" value="<%= @drawing.id %>"></input>
+    <input name='comment_text'></input>
+
+
+    <button>Submit</button>
+  </form>
+
+  <ol>
+    <% @all_comments.each do |comment| %>
+    <li><%= comment.text %></li>
+    <% end %>
+  </ol>
 
 
 <a href='/'>Return home</a>
