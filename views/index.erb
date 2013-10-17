@@ -3,25 +3,24 @@
 <link rel="stylesheet" type="text/css" href="style.css">
 <body>
   <canvas id="canvas" width="500" height="500"></canvas>
-
   <button id="Save">Save</button>
   <button id="clear">Clear</button>
   <button id="Restore">Restore</button>
+  <input type="color" id="colorPicker"></input>
+
+<ul>
+<% @drawings.each  do |drawing| %>
+<a href="/drawing/<%= drawing.id %>">Drawing: <%= drawing.id %></a>
+<% end %>
+</ul>
+
   <input type="color" id="colorPicker">
   
-  <form method='POST' action='/'>
-    <input name='comment_text'>
 
-    <button>Submit</button>
-  </form>
-
-  <ol>
-    <% @all_comments.each do |comment| %>
-    <li><%= comment.text %></li>
-    <% end %>
-  </ol>
 
 </body>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="draw.js"></script>
 
 </html>
+
