@@ -11,6 +11,8 @@ canvas.addEventListener("mousedown",function(e){
   flag = 1;
   ctx.beginPath();
   ctx.moveTo(e.offsetX,e.offsetY);
+  ctx.fillStyle = colorPicker.value;
+  ctx.fillRect(e.offsetX,e.offsetY,2,2);
   ctx.strokeStyle = colorPicker.value;
 });
 
