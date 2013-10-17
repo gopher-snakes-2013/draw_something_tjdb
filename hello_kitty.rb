@@ -10,3 +10,8 @@ ActiveRecord::Base.establish_connection(ENV['DATABASE_URL'] || 'postgres://local
 get '/' do
   erb :index
 end
+
+post '/save_drawing' do 
+  dataURL = params[:data]
+  Drawing.create(dataURL: dataURL)
+end

@@ -1,5 +1,11 @@
 var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
+//save to add images locally
+// var backgroundImage = new Image();
+// backgroundImage.src = 'http://www.bestcoloringpagesforkids.com/wp-content/uploads/2013/06/Coloring-Pages-For-Girls-Hello-Kitty.gif';
+// backgroundImage.onload = function(){
+// ctx.drawImage(backgroundImage, 0, 0, 500, 500);
+// };
 var save = document.getElementById("Save");
 var restore = document.getElementById("Restore");
 var clear = document.getElementById("clear");
@@ -26,7 +32,14 @@ canvas.addEventListener("mousemove", function(e){
 });
 
 save.addEventListener("click", function () {
-  dataURL = canvas.toDataURL();
+  event.preventDefault();
+  var dataURL = canvas.toDataURL();
+    $.ajax({
+      type: "POST",
+      url: "save_drawing",
+      data: {dataURL}
+    })
+
 });
 
 clear.addEventListener("click", function () {
@@ -40,3 +53,9 @@ restore.addEventListener("click", function() {
   }
   image.src = dataURL;
 });
+
+$('#save_form').submit(function(){
+  event.preventDefault();
+
+    })
+
