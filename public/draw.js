@@ -37,7 +37,7 @@ save.addEventListener("click", function () {
     $.ajax({
       type: "POST",
       url: "save_drawing",
-      data: {dataURL}
+      data: {data: dataURL}
     })
 
 });
