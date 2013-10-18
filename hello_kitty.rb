@@ -11,10 +11,11 @@ get '/' do
   @drawings = Drawing.all 
   erb :index
 end
-
-post '/save_drawing' do 
-  dataURL = params[:data]
-  Drawing.create(dataURL: dataURL)
+['/save_drawing', '/drawing/save_drawing'].each do |route|
+  post route do 
+    dataURL = params[:data]
+    Drawing.create(dataURL: dataURL)
+  end
 end
 
 get '/drawings' do 
