@@ -7,6 +7,12 @@ var colorPicker = document.getElementById("colorPicker");
 
 var flag = 0;
 
+var global_state = {
+  time: 0,
+  x: 0,
+  y: 0
+}
+
 canvas.addEventListener("mousedown",function(e){
   flag = 1;
   ctx.beginPath();
@@ -14,6 +20,7 @@ canvas.addEventListener("mousedown",function(e){
   ctx.fillStyle = colorPicker.value;
   ctx.fillRect(e.offsetX,e.offsetY,2,2);
   ctx.strokeStyle = colorPicker.value;
+  
 });
 
 canvas.addEventListener("mouseup", function(){
@@ -22,10 +29,23 @@ canvas.addEventListener("mouseup", function(){
 
 canvas.addEventListener("mousemove", function(e){
     if (flag === 1) {
-      ctx.lineTo(e.offsetX, e.offsetY)
+      var time_delta = e.timeStamp - global_state.time;
+      var x_delta = e.offsetX - global_state.x;
+      var y_delta = e.offsetY - global_state.y;
+      var magnitude = Math.sqrt(Math.pow(x_delta,2) + Math.pow(y_delta,2));
+      var velocity = magnitude / time_delta;
+
+      ctx.lineTo(e.offsetX, e.offsetY);
+      ctx.lineWidth = (velocity * 5);
       ctx.stroke();
+      global_state.time = e.timeStamp;
+      global_state.x = e.offsetX;
+      global_state.y = e.offsetY;
+
+      
     };
 });
+
 
 save.addEventListener("click", function () {
   dataURL = canvas.toDataURL();
