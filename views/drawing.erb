@@ -1,0 +1,41 @@
+<!doctype>
+<html>
+<link rel="stylesheet" type="text/css" href="../style.css">
+<body>
+  <h2 data-id="<%= @drawing.id %>">Draw Kitty!</h2>
+  <canvas id="canvas" width="500" height="500"></canvas>
+  <button id="Save" data-url="./../save_drawing">Save</button>
+  <button id="clear">Clear</button>
+  <button id="Restore">Restore</button>
+  <input type="color" id="colorPicker"></input>
+
+  <form method='POST' action='/'>
+    <input type="hidden" name="drawing_id" value="<%= @drawing.id %>"></input>
+    <input name='comment_text'></input>
+
+
+    <button>Submit</button>
+  </form>
+
+  <ol>
+    <% @all_comments.each do |comment| %>
+    <li><%= comment.text %></li>
+    <% end %>
+  </ol>
+
+
+<a href='/'>Return home</a>
+</body>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="../draw.js"></script>
+<script src="../drawing.js"></script>
+
+</html>
+
+
+
+
+
+
+
+

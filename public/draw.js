@@ -1,3 +1,4 @@
+$(document).ready(function(){
 var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
 var save = document.getElementById("Save");
@@ -46,9 +47,19 @@ canvas.addEventListener("mousemove", function(e){
     };
 });
 
+canvas.addEventListener("mouseout", function(e){
+  flag = 0;
+});
 
 save.addEventListener("click", function () {
-  dataURL = canvas.toDataURL();
+  event.preventDefault();
+  var dataURL = canvas.toDataURL();
+    $.ajax({
+      type: "POST",
+      url: $(this).attr("data-url"),
+      data: {data: dataURL}
+    })
+
 });
 
 clear.addEventListener("click", function () {
@@ -62,3 +73,5 @@ restore.addEventListener("click", function() {
   }
   image.src = dataURL;
 });
+
+})
