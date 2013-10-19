@@ -74,9 +74,4 @@ restore.addEventListener("click", function() {
   image.src = dataURL;
 });
 
-$('#save_form').submit(function(){
-  event.preventDefault();
-
-    })
-
 })
