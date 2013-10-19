@@ -3,8 +3,6 @@ require 'sinatra/activerecord'
 require './models/drawing'
 require './models/comment'
 
-use Rack::MethodOverride
-
 ActiveRecord::Base.establish_connection(ENV['DATABASE_URL'] || 'postgres://localhost/draw_kitty')
 
 get '/' do
@@ -12,11 +10,9 @@ get '/' do
   erb :index
 end
 
-['/save_drawing', '/drawing/save_drawing'].each do |route|
-  post route do 
-    dataURL = params[:data]
-    Drawing.create!(dataURL: dataURL)
-  end
+post '/save_drawing' do 
+  dataURL = params[:data]
+  Drawing.create!(dataURL: dataURL)
 end
 
 get '/drawing/:id' do 

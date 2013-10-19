@@ -1,4 +1,5 @@
-$(document).ready(function(){var canvas = document.getElementById("canvas");
+$(document).ready(function(){
+var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
 var save = document.getElementById("Save");
 var restore = document.getElementById("Restore");
@@ -46,13 +47,16 @@ canvas.addEventListener("mousemove", function(e){
     };
 });
 
+canvas.addEventListener("mouseout", function(e){
+  flag = 0;
+});
 
 save.addEventListener("click", function () {
   event.preventDefault();
   var dataURL = canvas.toDataURL();
     $.ajax({
       type: "POST",
-      url: "./save_drawing",
+      url: $(this).attr("data-url"),
       data: {data: dataURL}
     })
 
